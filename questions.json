@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "Capitala Romaniei?",
+    "choices": ["Bucuresti", "Cluj", "Timisoara", "Iasi"],
+    "answer": "Bucuresti"
+  },
+  {
+    "id": 2,
+    "question": "Cati ani are un secol?",
+    "choices": ["50", "100", "10", "25"],
+    "answer": "100"
+  },
+  {
+    "id": 3,
+    "question": "Care este limbajul folosit pentru Android nativ?",
+    "choices": ["Swift", "Kotlin", "Ruby", "C#"],
+    "answer": "Kotlin"
+  },
+  {
+    "id": 4,
+    "question": "Ce planeta este a treia de la Soare?",
+    "choices": ["Mercur", "Venus", "Pamant", "Marte"],
+    "answer": "Pamant"
+  },
+  {
+    "id": 5,
+    "question": "Care este simbolul chimic pentru aur?",
+    "choices": ["Au", "Ag", "Fe", "Hg"],
+    "answer": "Au"
+  },
+  {
+    "id": 6,
+    "question": "Cine a pictat Mona Lisa?",
+    "choices": ["Leonardo da Vinci", "Pablo Picasso", "Michelangelo", "Vincent van Gogh"],
+    "answer": "Leonardo da Vinci"
+  },
+  {
+    "id": 7,
+    "question": "Cati jucatori sunt intr-o echipa de fotbal?",
+    "choices": ["9", "10", "11", "12"],
+    "answer": "11"
+  },
+  {
+    "id": 8,
+    "question": "Care este cel mai mare ocean de pe Pamant?",
+    "choices": ["Atlantic", "Indian", "Arctic", "Pacific"],
+    "answer": "Pacific"
+  },
+  {
+    "id": 9,
+    "question": "In ce an a avut loc primul zbor al lui Wright Brothers?",
+    "choices": ["1903", "1910", "1899", "1920"],
+    "answer": "1903"
+  },
+  {
+    "id": 10,
+    "question": "Care este cel mai mare mamifer terestru?",
+    "choices": ["Elefantul african", "Balena albastra", "Girafa", "Rinocerul"],
+    "answer": "Elefantul african"
+  },
+  {
+    "id": 11,
+    "question": "Care este moneda Japoniei?",
+    "choices": ["Yen", "Won", "Dollar", "Peso"],
+    "answer": "Yen"
+  },
+  {
+    "id": 12,
+    "question": "Care element chimic are simbolul O?",
+    "choices": ["Oxygen", "Osmium", "Gold", "Iron"],
+    "answer": "Oxygen"
+  },
+  {
+    "id": 13,
+    "question": "Care este cel mai lung fluviu din lume?",
+    "choices": ["Nil", "Amazon", "Yangtze", "Mississippi"],
+    "answer": "Nil"
+  },
+  {
+    "id": 14,
+    "question": "Cine a scris 'Romeo si Julieta'?",
+    "choices": ["Shakespeare", "Hemingway", "Tolstoi", "Poe"],
+    "answer": "Shakespeare"
+  },
+  {
+    "id": 15,
+    "question": "Care tara are cea mai mare populatie?",
+    "choices": ["China", "India", "SUA", "Indonezia"],
+    "answer": "China"
+  },
+  {
+    "id": 16,
+    "question": "Care este limbajul de programare folosit pentru iOS nativ?",
+    "choices": ["Swift", "Java", "C#", "Python"],
+    "answer": "Swift"
+  },
+  {
+    "id": 17,
+    "question": "Care este simbolul chimic pentru fier?",
+    "choices": ["Fe", "F", "Ir", "I"],
+    "answer": "Fe"
+  },
+  {
+    "id": 18,
+    "question": "Care continent are cele mai multe tari?",
+    "choices": ["Africa", "Asia", "Europa", "America de Sud"],
+    "answer": "Africa"
+  },
+  {
+    "id": 19,
+    "question": "Ce tara este celebra pentru piramidele sale?",
+    "choices": ["Egipt", "Mexico", "India", "Peru"],
+    "answer": "Egipt"
+  },
+  {
+    "id": 20,
+    "question": "Cine a descoperit penicilina?",
+    "choices": ["Alexander Fleming", "Louis Pasteur", "Marie Curie", "Gregor Mendel"],
+    "answer": "Alexander Fleming"
+  }
+]
