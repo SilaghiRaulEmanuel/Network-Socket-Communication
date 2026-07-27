@@ -24,7 +24,6 @@ rl.question("Nume jucator: ", (nameInput) => {
 
             if (input === 'b') {
                 if (!buzzed) {
-                    // trimite buzz UDP
                     const u = dgram.createSocket('udp4');
                     u.send(Buffer.from('BUZZ:' + name), 0, '255.255.255.255', UDP_PORT, () => u.close());
                     buzzed = true;
@@ -32,12 +31,11 @@ rl.question("Nume jucator: ", (nameInput) => {
                 } else {
                     console.log("Ai deja buzz-uit! Poți răspunde acum.");
                 }
-                askAnswer(); // prompt continuă pentru a permite să răspundă numeric
+                askAnswer();
             } else if (["1", "2", "3", "4"].includes(input)) {
                 const idx = parseInt(input) - 1;
                 client.write(JSON.stringify({ type: 'ANSWER', id: currentQuestion.id, answer: currentQuestion.choices[idx] }) + "\n");
 
-                // reset pentru următoarea întrebare
                 buzzed = false;
                 currentQuestion = null;
             } else {
