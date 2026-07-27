@@ -2,8 +2,7 @@
 import socket, threading, json, tkinter as tk
 from tkinter import messagebox
 import sys
-import socket  # pentru UDP
- # pentru UDP
+import socket 
 
 SERVER_HOST = '127.0.0.1'
 TCP_PORT = 9009
