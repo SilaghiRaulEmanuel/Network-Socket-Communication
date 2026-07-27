@@ -2,9 +2,6 @@
 import socket, threading, json, time, os
 from pathlib import Path
 
-# ---------------------------------------------------------------
-# CONFIGURARE SERVER
-# ---------------------------------------------------------------
 TCP_HOST = '0.0.0.0'
 TCP_PORT = 9009
 UDP_HOST = '0.0.0.0'
@@ -14,9 +11,6 @@ QUESTION_TIMEOUT = 10
 MIN_PLAYERS_TO_START = 2
 QUESTIONS_FILE = 'questions.json'
 
-# ---------------------------------------------------------------
-# STARE GLOBALĂ
-# ---------------------------------------------------------------
 clients_lock = threading.Lock()
 clients = {}  # conn -> {'name':..., 'addr':(...)}
 
@@ -27,7 +21,7 @@ answers_lock = threading.Lock()
 answers = {}  # name -> answer
 
 buzz_lock = threading.Lock()
-buzzed_player = None  # primul care a buzz-uit la întrebarea curentă
+buzzed_player = None  
 
 current_qid = None
 
@@ -35,9 +29,6 @@ stop_event = threading.Event()
 restart_event = threading.Event()
 players_cond = threading.Condition()
 
-# ---------------------------------------------------------------
-# ÎNCĂRCARE ÎNTREBĂRI
-# ---------------------------------------------------------------
 script_dir = Path(__file__).parent
 qfile = script_dir / QUESTIONS_FILE
 if not qfile.exists():
@@ -51,9 +42,6 @@ with open(qfile, 'r', encoding='utf-8') as f:
 def safe_print(*a, **k):
     print(*a, **k)
 
-# ---------------------------------------------------------------
-# UDP LISTENER PENTRU BUZZ
-# ---------------------------------------------------------------
 def udp_listener():
     global buzzed_player
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -74,9 +62,8 @@ def udp_listener():
                 name = text.split(':', 1)[1]
                 with buzz_lock:
                     if buzzed_player is None:
-                        buzzed_player = name  # setăm instant jucătorul care a buzz-uit
+                        buzzed_player = name 
                         safe_print(f"[UDP] BUZZ from {name} ({addr})")
-                        # trimite confirmare direct și info celorlalți
                         with clients_lock:
                             for conn, info in clients.items():
                                 try:
@@ -94,9 +81,6 @@ def udp_listener():
     except: pass
     safe_print("[UDP] Listener stopped")
 
-# ---------------------------------------------------------------
-# BROADCAST TCP
-# ---------------------------------------------------------------
 def broadcast(obj):
     to_remove = []
     with clients_lock:
@@ -110,9 +94,6 @@ def broadcast(obj):
             except: pass
             clients.pop(c, None)
 
-# ---------------------------------------------------------------
-# CLIENT THREAD TCP
-# ---------------------------------------------------------------
 def client_thread(conn, addr):
     name = None
     try:
@@ -164,7 +145,6 @@ def client_thread(conn, addr):
                         qid = obj.get('id')
                         ans = obj.get('answer')
                         with answers_lock, buzz_lock:
-                            # acceptăm răspunsul dacă e jucătorul care a buzz-uit
                             if qid == current_qid and name == buzzed_player and name not in answers:
                                 answers[name] = ans
             except socket.timeout:
@@ -182,9 +162,6 @@ def client_thread(conn, addr):
         with players_cond:
             players_cond.notify_all()
 
-# ---------------------------------------------------------------
-# START TCP SERVER
-# ---------------------------------------------------------------
 def start_tcp_server():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -204,9 +181,6 @@ def start_tcp_server():
 
     threading.Thread(target=accept_loop, daemon=True).start()
 
-# ---------------------------------------------------------------
-# GAME LOOP
-# ---------------------------------------------------------------
 def game_loop():
     global current_qid, answers, buzzed_player
     threading.Thread(target=udp_listener, daemon=True).start()
